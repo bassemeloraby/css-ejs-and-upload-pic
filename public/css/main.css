@@ -13,11 +13,11 @@ img {
   margin-right: 30px;
 }
 /* start upload */
-/* start addImg */ 
+/* start addImg */
 .addImg {
-    display: table-caption;
-    background-color: bisque;
-} 
+  display: table-caption;
+  background-color: bisque;
+}
 /* end addImg */
 /* end upload */
 /* end header */
@@ -26,7 +26,6 @@ img {
   justify-content: space-between;
   background-color: wheat;
   display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 40px;
 }
-

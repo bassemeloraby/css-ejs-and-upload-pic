@@ -53,6 +53,7 @@ const upload = multer({ storage: storage });
 const imgModel = require('./models/model');
 
 // Step 7 - the GET request handler that provides the HTML UI
+// ---------------------------start routes------------------//
 
 app.get('/edit', (req, res) => {
 	imgModel.find({}, (err, items) => {
@@ -99,11 +100,7 @@ app.post('/', upload.single('image'), (req, res, next) => {
 		}
 	});
 });
-
-
-app.get('/bassem',(req,res)=>{
-    res.render('index',{text:'this an EJS file'});
-})
+// ---------------------------end routes------------------//
 
 
 
