@@ -62,7 +62,7 @@ app.get('/edit', (req, res) => {
 			res.status(500).send('An error occurred', err);
 		}
 		else {
-			res.render('imagesPage', { items: items });
+			res.render('imagesPageEdit', { items: items });
 		}
 	});
 });
