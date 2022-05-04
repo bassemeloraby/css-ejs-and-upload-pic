@@ -93,9 +93,7 @@ app.get('/bassem',(req,res)=>{
     res.render('index',{text:'this an EJS file'});
 })
 
-//create server at port
-// const port =3000
-// app.listen(port,console.log(`express server work now at:${port}`))
+
 
 // Step 9 - configure the server's port
 
