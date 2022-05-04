@@ -35,9 +35,9 @@ mongoose.connect(process.env.MONGO_URL,
 
 // Step 5 - set up multer for storing uploaded files
 
-var multer = require('multer');
+const multer = require('multer');
 
-var storage = multer.diskStorage({
+const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		cb(null, 'uploads')
 	},
@@ -46,15 +46,15 @@ var storage = multer.diskStorage({
 	}
 });
 
-var upload = multer({ storage: storage });
+const upload = multer({ storage: storage });
 
 // Step 6 - load the mongoose model for Image
 
-var imgModel = require('./model');
+const imgModel = require('./models/model');
 
 // Step 7 - the GET request handler that provides the HTML UI
 
-app.get('/', (req, res) => {
+app.get('/edit', (req, res) => {
 	imgModel.find({}, (err, items) => {
 		if (err) {
 			console.log(err);
@@ -65,11 +65,23 @@ app.get('/', (req, res) => {
 		}
 	});
 });
+//show data
+app.get('/', (req, res) => {
+	imgModel.find({}, (err, items) => {
+		if (err) {
+			console.log(err);
+			res.status(500).send('An error occurred', err);
+		}
+		else {
+			res.render('imagesPageShow', { items: items });
+		}
+	});
+});
 // Step 8 - the POST handler for processing the uploaded file
 
 app.post('/', upload.single('image'), (req, res, next) => {
 
-	var obj = {
+	const obj = {
 		name: req.body.name,
 		desc: req.body.desc,
 		img: {
@@ -97,7 +109,7 @@ app.get('/bassem',(req,res)=>{
 
 // Step 9 - configure the server's port
 
-var port = process.env.PORT || '3000'
+const port = process.env.PORT || '3000'
 app.listen(port, err => {
 	if (err)
 		throw err
