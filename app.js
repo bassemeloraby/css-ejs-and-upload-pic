@@ -55,18 +55,6 @@ const imgModel = require('./models/model');
 // Step 7 - the GET request handler that provides the HTML UI
 // ---------------------------start routes------------------//
 
-app.get('/edit', (req, res) => {
-	imgModel.find({}, (err, items) => {
-		if (err) {
-			console.log(err);
-			res.status(500).send('An error occurred', err);
-		}
-		else {
-			res.render('imagesPageEdit', { items: items });
-		}
-	});
-});
-//show data
 app.get('/', (req, res) => {
 	imgModel.find({}, (err, items) => {
 		if (err) {
@@ -74,10 +62,11 @@ app.get('/', (req, res) => {
 			res.status(500).send('An error occurred', err);
 		}
 		else {
-			res.render('imagesPageShow', { items: items });
+			res.render('imagesPage', { items: items });
 		}
 	});
 });
+
 // Step 8 - the POST handler for processing the uploaded file
 
 app.post('/', upload.single('image'), (req, res, next) => {
@@ -102,7 +91,28 @@ app.post('/', upload.single('image'), (req, res, next) => {
 });
 // ---------------------------end routes------------------//
 
+//-----------try---------------///
+const methodOverride = require('method-override');
 
+app.use(methodOverride('_method',{methods:['POST','GET']}));
+
+app.delete('/delete/:id',(req,res)=>{
+	imgModel.deleteOne({_id: req.params.id},(error) =>{
+		if(error) console.log(`there was an error: ${error}`);
+		else {
+			res.redirect('/');
+		}
+	})
+})
+
+//  ​(​'/delete/:id'​,​​​  ​(​req​,​ ​res​)​ ​=>​ ​{ 
+//  ​    ​imgModel​.​deleteOne​(​{​ ​_id​: ​req​.​params​.​id​ ​}​,​ ​(​error​)​ ​=>​ ​{ 
+//  ​      ​if​ ​(​error​)​ ​console​.​log​(​`there was an error: ​${​error​}​`​)​; 
+//  ​      ​else​ ​{ 
+//  ​        ​res​.​redirect​(​'/'​)​; 
+//  ​      ​} 
+//  ​    ​}​)​; 
+//  ​  ​})​;
 
 // Step 9 - configure the server's port
 
