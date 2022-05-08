@@ -17,17 +17,18 @@ img {
 .addImg {
   display: table-caption;
   background-color: bisque;
+  border-style: outset;
+  border-width: 9px;
 }
 /* end addImg */
 /* end upload */
 /* end header */
 
 .show {
-  justify-content: space-between;
   background-color: wheat;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 0px;
 }
 
 .img-thumbnail {
@@ -37,8 +38,7 @@ img {
   border-radius: 0.25rem;
   max-width: 100%;
   height: auto;
-  margin-left: 10px;
-  margin-top: 10px;
+  
 }
 
 .holder {
