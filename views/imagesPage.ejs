@@ -81,7 +81,7 @@
         <div class="show">
           <% items.forEach(function(image) { %>
           <div>
-            <div>
+            <div class="holder">
               <img
                 class="img-thumbnail"
                 src="data:image/<%=image.img.contentType%>;base64,
@@ -102,6 +102,7 @@
           </div>
           <% }) %>
         </div>
+        
       </div>
       <!-- end ubloded image -->
     </div>
