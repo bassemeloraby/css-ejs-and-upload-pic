@@ -26,12 +26,13 @@ app.use('/img',express.static(__dirname + 'public/img'))
 app.set('views','./views')
 app.set('view engine', 'ejs')
 
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/imagesInMongoApp');
 // Step 2 - connect to the database
 
-mongoose.connect(process.env.MONGO_URL,
-	{ useNewUrlParser: true, useUnifiedTopology: true }, err => {
-		console.log('connected to Mongo Dp...')
-	});
+// mongoose.connect(process.env.MONGO_URL,
+// 	{ useNewUrlParser: true, useUnifiedTopology: true }, err => {
+// 		console.log('connected to Mongo Dp...')
+// 	});
 
 // Step 5 - set up multer for storing uploaded files
 
